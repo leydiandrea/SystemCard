@@ -32,8 +32,8 @@ public class TarjetaServiceImpl implements TarjetaService {
             t.setNumeroValidacion(numeroAleatorio);
             t.setHash(String.valueOf(request.getPan().hashCode()));//se genera el hash de la pan usando la funcion hashcode, es nativa de java.
             t.setId(t.getHash());
-            tarjetaRepository.save(t);
             t.setEstado("CREADA");
+             tarjetaRepository.save(t);
             return new CrearTarjetaResponse("00", "exito", numeroAleatorio, enmascarar(t.getPan().toString()), t.getHash());
         }catch (Exception e ){
            // e.printStackTrace(); Opcion de imprimir una excepcion
